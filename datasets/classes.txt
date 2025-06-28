@@ -1,5 +1,0 @@
-cercospora
-leaf
-miner
-phoma
-rust
