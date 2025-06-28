@@ -1,0 +1,23 @@
+# Leaf Deseases - YOLOv8 & SAM
+
+## Alguns datasets interessantes disponíveis na internet:
+
+### JMuBEN Coffee Dataset
+- 58,555 imagens
+- Imagens are 128x128
+- Cercospora (7681), Healthy (19.000), Rust (8336), Miner (17.000) and Phoma (6571)
+https://www.kaggle.com/datasets/noamaanabdulazeem/jmuben-coffee-dataset?resource=download
+Não será utilizado pois as imagens desse dataset são um zoom das doenças nas folhas, para o objetivo maior de encontrar a doença em folhas e aplicar o SAM esse tipo de dado não parece funcionar bem.
+
+### RoCoLe (robusta coffee leaf images dataset)
+- São 4 fotos para cada um dos 390 pés de café da lavoura
+- No total 1560 imagens
+- Rust dividido em 4 níveis de severidade
+- Health (791), rust (l1= 344, l2= 166, l3= 62, l4= 30), red spider mite (167)
+https://datasetninja.com/rocole
+
+## Dentro de Dateset
+
+### Train
+### Val
+### complete -> Todas as imagens antes da separação em train e val
