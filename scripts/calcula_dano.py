@@ -9,7 +9,7 @@ import torch
 
 # --- CONFIGURAÇÕES ---
 # Caminhos
-image_path = '../datasets/val/images/f7a71ecf-bicho_mineiro98.jpg'
+image_path = '../datasets/val/images/b9cbb229-bicho_mineiro19.jpg'
 yolo_model_path = '../runs/leaf-disease-yolo-treino1/weights/best.pt'
 sam_checkpoint_path = '../models/sam_vit_h_4b8939.pth'
 
@@ -73,9 +73,15 @@ for class_id, box in zip(classes, boxes):
 
 # --- CÁLCULO FINAL ---
 if mask_folha is not None:
+    area_total = image_rgb.shape[0] * image_rgb.shape[1]
     area_folha = np.sum(mask_folha)
     area_doenca = np.sum(np.logical_and(mask_doenca_total, mask_folha))  # doença dentro da folha
-    percentual_afetado = (area_doenca / area_folha) * 100
+    percentual_afetado = (area_doenca / area_folha) * 100 if area_folha > 0 else 0.0
+
+    print("Área total da imagem: ", area_total)
+    print("Área da folha: ", area_folha)
+    print("Área da doença (dentro da folha): ", area_doenca)
+    print(f"Percentual da folha afetada: {percentual_afetado:.2f}%")
 else:
     percentual_afetado = 0.0
 
@@ -83,8 +89,8 @@ else:
 plt.figure(figsize=(8, 8))
 plt.imshow(image_rgb)
 if mask_folha is not None:
-    plt.imshow(mask_folha, alpha=0.5, cmap='YlGn')
-plt.imshow(mask_doenca_total, alpha=0.7, cmap='Reds')
+    plt.imshow(mask_folha, alpha=0.4, cmap='YlGn')
+plt.imshow(mask_doenca_total, alpha=0.3, cmap='Reds')
 plt.title(f"Área afetada: {percentual_afetado:.2f}%")
 plt.axis('off')
 plt.tight_layout()
