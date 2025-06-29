@@ -12,6 +12,9 @@ runs/
 datasets/
 !datasets/README.md  # se quiser manter uma descrição do dataset
 
+# Imagens de resultado
+resultados_SAM/
+
 # Cache de labels
 *.cache
 
