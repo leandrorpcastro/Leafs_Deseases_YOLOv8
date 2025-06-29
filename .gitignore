@@ -5,6 +5,9 @@ runs/
 *.tflite
 *.torchscript
 
+# Modelos pesados como o SAM_vit_h
+*.pth
+
 # Datasets e imagens (mantenha somente se forem pequenos e versionáveis)
 datasets/
 !datasets/README.md  # se quiser manter uma descrição do dataset
