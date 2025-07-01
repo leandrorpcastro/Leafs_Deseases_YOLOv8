@@ -29,10 +29,10 @@ yolo_results = yolo_model(image_path, imgsz=640, conf=0.25, iou=0.5)[0]
 boxes = yolo_results.boxes.xyxy.cpu().numpy().astype(int)
 classes = yolo_results.boxes.cls.cpu().numpy().astype(int)
 confidences = yolo_results.boxes.conf.cpu().numpy()
+class_names = yolo_model.names  # Dict: {0: 'folha', 1: 'bicho mineiro', ...}
 
-# --- RESULTADOS DA DETECÇÂO ---
-print("Classes detectadas:", np.unique(classes))
-# Verifica se só detectou a classe 0 (Folha)
+# --- RESULTADOS DA DETECÇÃO ---
+print("Classes detectadas:", [class_names[c] for c in np.unique(classes)])
 if np.array_equal(np.unique(classes), [0]) or np.array_equal(np.unique(classes), []):
     print("⚠️ Apenas folhas detectadas. Nenhuma doença foi identificada.")
     exit()
@@ -65,11 +65,9 @@ for class_id, box in zip(classes, boxes):
         mask_folha = best_mask
 
     else:  # Doença
-        # Aqui só faz a predição com a bbox
         masks, scores, _ = predictor.predict(box=box, multimask_output=True)
         best_mask = masks[np.argmax(scores)]
         mask_doenca_total = np.logical_or(mask_doenca_total, best_mask)
-
 
 # --- CÁLCULO FINAL ---
 if mask_folha is not None:
@@ -88,9 +86,22 @@ else:
 # --- VISUALIZAÇÃO ---
 plt.figure(figsize=(8, 8))
 plt.imshow(image_rgb)
+
+# Máscaras
 if mask_folha is not None:
     plt.imshow(mask_folha, alpha=0.4, cmap='YlGn')
 plt.imshow(mask_doenca_total, alpha=0.3, cmap='Reds')
+
+# Mostrar caixas e nomes das doenças
+for box, class_id in zip(boxes, classes):
+    if class_id == 0:
+        continue  # Ignora folha
+    x1, y1, x2, y2 = box
+    class_name = class_names[class_id]
+    plt.text(x1, y1 - 5, class_name, color='red', fontsize=12, backgroundcolor='white')
+    plt.gca().add_patch(plt.Rectangle((x1, y1), x2 - x1, y2 - y1,
+                                      edgecolor='red', facecolor='none', linewidth=2))
+
 plt.title(f"Área afetada: {percentual_afetado:.2f}%")
 plt.axis('off')
 plt.tight_layout()
