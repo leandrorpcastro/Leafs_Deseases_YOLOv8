@@ -8,7 +8,7 @@ runs/
 # Modelos pesados como o SAM_vit_h
 *.pth
 
-# Datasets e imagens (mantenha somente se forem pequenos e versionáveis)
+# Datasets e imagens
 datasets/
 !datasets/README.md  # se quiser manter uma descrição do dataset
 
@@ -40,5 +40,5 @@ env/
 ENV/
 .venv/
 
-# Notebooks com saída pesada (limpe antes ou ignore)
+# Notebooks com saída pesada
 *.ipynb_checkpoints/

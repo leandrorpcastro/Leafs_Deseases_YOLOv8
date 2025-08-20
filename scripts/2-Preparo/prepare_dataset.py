@@ -4,7 +4,7 @@ import cv2
 import shutil
 
 # --- CONFIGURAÇÕES ---
-dataset_root = Path("../datasets")
+dataset_root = Path("../../datasets")
 input_dir = dataset_root / "complete"
 output_dir = dataset_root  # Onde serão criados os diretórios 'train/' e 'val/'
 

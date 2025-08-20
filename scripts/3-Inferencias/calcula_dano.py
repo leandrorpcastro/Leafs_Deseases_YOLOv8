@@ -9,13 +9,13 @@ import torch
 
 # --- CONFIGURAÇÕES ---
 # Caminhos
-image_path = '../datasets/val/images/b9cbb229-bicho_mineiro19.jpg'
-yolo_model_path = '../runs/leaf-disease-yolo-treino1/weights/best.pt'
-sam_checkpoint_path = '../models/sam_vit_h_4b8939.pth'
+image_path = '../datasets/complete/images/7d48a436-28.jpg'
+yolo_model_path = '../../runs/leaf-disease-yolo-treino1/weights/best.pt'
+sam_checkpoint_path = '../../models/sam_vit_h_4b8939.pth'
 
 # Garante que saída vá para uma pasta organizada com timestamp
 timestamp = datetime.now().strftime("%d-%m-%H-%M-%S")
-output_dir = Path("../resultados_SAM")
+output_dir = Path("../../resultados_SAM")
 output_dir.mkdir(parents=True, exist_ok=True)
 output_file = output_dir / f"resultado-{timestamp}.png"
 

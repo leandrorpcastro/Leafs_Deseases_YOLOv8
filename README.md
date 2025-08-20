@@ -75,8 +75,10 @@ python scripts/infer_yolo.py
 ### More Detailed Examples
 
 1. Calculate disease damage area:
+
 ```python
-from scripts.calcula_dano import calculate_damage
+from scripts.Inferencias.calcula_dano import calculate_damage
+
 image_path = 'path/to/your/image.jpg'
 result = calculate_damage(image_path)
 print(f"Affected area percentage: {result['percentage']}%")
