@@ -5,7 +5,7 @@ import numpy as np
 
 # --- CONFIGURAÇÕES ---
 image_path = '../datasets/val/images/f7a71ecf-bicho_mineiro98.jpg'
-model_path = '../../runs/leaf-disease-yolo-treino1/weights/best.pt'
+model_path = '../../runs/Folhas_doentes/leaf-disease-yolo-treino1/weights/best.pt'
 
 # --- CARREGAR IMAGEM ---
 image_bgr = cv2.imread(image_path)

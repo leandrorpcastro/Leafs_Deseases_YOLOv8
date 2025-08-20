@@ -10,7 +10,7 @@ import torch
 # --- CONFIGURAÇÕES ---
 # Caminhos
 image_path = '../datasets/complete/images/7d48a436-28.jpg'
-yolo_model_path = '../../runs/leaf-disease-yolo-treino1/weights/best.pt'
+yolo_model_path = '../../runs/Folhas_doentes/leaf-disease-yolo-treino1/weights/best.pt'
 sam_checkpoint_path = '../../models/sam_vit_h_4b8939.pth'
 
 # Garante que saída vá para uma pasta organizada com timestamp

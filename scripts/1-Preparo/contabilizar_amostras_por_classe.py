@@ -1,8 +1,8 @@
 import os
 from collections import defaultdict
 
-# Caminho onde estão os arquivos de label
-caminho_labels = "datasets/val/labels"
+# Caminho onde estão os arquivos de label que você quer contabilizar
+caminho_labels = "../../datasets/Botoes_de_cafe/labels/test"
 
 # Contadores
 ocorrencias_por_classe = defaultdict(int)

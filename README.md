@@ -4,6 +4,8 @@ This project implements an advanced computer vision system for detecting and ana
 
 The system processes leaf images to identify multiple disease types including Miner, Rust, Cercospora, and Phoma. It not only detects the presence of diseases but also calculates the affected area percentage, providing quantitative analysis for plant health assessment. The integration of SAM enables precise segmentation of both leaves and diseased areas, making it a powerful tool for agricultural monitoring and disease management.
 
+Importante resaltar que o projeto foi elaborado para ser treinado na GPU do google colab
+
 ## Repository Structure
 ```
 .
